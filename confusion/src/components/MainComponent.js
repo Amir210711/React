@@ -88,12 +88,7 @@ class Main extends React.Component {
         <Switch>
           <Route path="/home" component={HomePage}/>
           <Route exact path="/menu"
-          component={()=>
-            <div>
-              <Menu dishes={this.props.dishes} onClick={(dishId)=>this.onDishSelect(dishId)}/>
-              <DishDetail className="text-center" dish={this.props.dishes.filter((dish) => dish.id === this.props.selectedDish)[0]}></DishDetail>
-            </div>
-          }/>
+          component={()=><Menu dishes={this.props.dishes} onClick={(dishId)=>this.onDishSelect(dishId)}/>}/>
         <Route path="/menu/:dishId" component={DishWithId}/>
         <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
         <Route exact path="/aboutus" component={AboutPage}/>
