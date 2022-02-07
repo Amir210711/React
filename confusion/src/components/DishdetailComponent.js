@@ -25,7 +25,7 @@ export class CommentForm extends Component {
 
     handleSubmit(values) {
         this.toggleModal();
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
     toggleModal() {
@@ -113,7 +113,7 @@ export class CommentForm extends Component {
         }
     }
 
-    function RenderComments({comments, dishId, addComment}){
+    function RenderComments({comments, postComment, dishId}) {
         const comment = comments.map(comment => {
             return (
                 <li key={comment.id}>
@@ -136,7 +136,7 @@ export class CommentForm extends Component {
                 <ul class='list-unstyled'>
                     {comment}
                 </ul>
-                <CommentForm dishId={dishId} addComment={addComment}/>
+                <CommentForm dishId={dishId} postComment={postComment} />
             </div>
         )
     }
@@ -178,7 +178,7 @@ export class CommentForm extends Component {
                 <div class='row'>
                     <RenderDish dish={props.dish} />
                     <RenderComments comments={props.comments}
-                    addComment={props.addComment}
+                    postComment={props.postComment}
                     dishId={props.dish.id}/>
                 </div>  
             </div>
